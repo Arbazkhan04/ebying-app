@@ -1,0 +1,156 @@
+<div class="container my-5">
+  <h1>Welcome To The Product Analystics</h1>
+  <table class="table table-hover table-strip">
+    <thead>
+      <tr>
+        <th class="text-center">#</th>
+        <th class="text-center">Product Name</th>
+        <th class="text-center">Prduct Image</th>
+        <th class="text-center">Price</th>
+        <th class="text-center">Status</th>
+        <th class="text-center">Status Summary</th>
+        <th class="text-center">Company Name</th>
+        <th colspan="8" class="text-center">Actions</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of myArray;let i='index'">
+        <!-- <ng-container *ngIf="data.softDelete!==1"> -->
+        <th class="text-center">{{i+1}}</th>
+        <td class="text-center">{{data.productName}}</td>
+        <td class="text-center"><img [src]="url+data.ProductImages[0].ProductImageUrl" alt=""
+            class="rounded-circle image "></td>
+        <td class="text-center">{{data.price}}</td>
+        <td class="text-center" [ngClass]="data.Status===1? 'text-primary':'text-danger'">{{data.Status}} </td>
+        <td class="text-center" [ngClass]="data.Status===1? 'text-primary':'text-danger' ">{{data.Status===1?
+          'In-stock':'Out-of-stock'}} </td>
+        <td class="text-center">{{data.companyName}} </td>
+        <td class="text-center"><i class="fas fa-eye text-info" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="getParticularDataById(data._id)"></i></td>
+        <td class="text-center"><i class="fas fa-pencil-alt" data-bs-toggle="modal" data-bs-target="#exampleModal1"
+            (click)="getParticularDataById(data._id)"></i></td>
+
+        <td colspan="4" class="text-center"><button class="btn btn-outline-danger"
+            (click)="deleteById(data._id)">Delete</button></td>
+        <td colspan="4" class="text-center"><button class="btn btn-outline-danger"
+            (click)="hardDeleteById(data._id)">Hard Delete</button></td>
+        <!-- </ng-container> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{getParticularData?.productName}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col" *ngFor="let data of getParticularData?.ProductImages">
+              <img [src]="url+data.ProductImageUrl" [alt]="getParticularData?.productName">
+            </div>
+          </div>
+        </div>
+        <div class="container my-4">
+          <div class="row">
+            <div class="col">
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      productDetail
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">{{getParticularData?.companyName}}</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal-2 for edit -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel1">title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form start  -->
+        <form [formGroup]="myForm" (ngSubmit)="updata()">
+          <h2>Let's update the Product</h2>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product Name </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="productName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product quantity </label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="quantity">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product price</label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="price">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product description</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="description">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product color</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="color">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product companyName</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="companyName">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Product category</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+              formControlName="category">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>

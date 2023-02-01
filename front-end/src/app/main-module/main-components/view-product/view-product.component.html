@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="image-rapper my-5" *ngFor="let data of productObject?.ProductImages">
+                <img [src]="url+data.ProductImageUrl" alt="">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h1 class="text">{{productObject?.productName}}</h1>
+            <hr>
+            <div class="content">
+                <span>Total Quantity</span>
+                <ul>
+
+                    <li>{{productObject?.quantity}}</li>
+                </ul>
+                <h1>{{productObject.companyName}}</h1>
+                <h3>{{productObject.price | currency}}</h3>
+                <span>Please Select Size:</span>
+                <div class="d-flex justify-content-center">
+
+                    <div class="cat action" *ngFor="let data of productObject.size">
+                        <label>
+                            <input type="checkbox" [value]="data" (click)="getSizes($event)"><span>{{data}}</span>
+                        </label>
+                    </div>
+
+
+                </div>
+                <div>
+                    <button class="btn btn-outline-primary mx-3 " (click)="derease()">-</button>
+                    {{selectedQuantity}}
+                    <button class="btn btn-outline-primary mx-3 " (click)="increase()">+</button>
+                </div>
+                <!-- <button class="btn btn-outline-primary my-1 mx-1" [attr.data-bs-toggle]="offCanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
+                    (click)="addToCart()">{{enumButtonText['Add To Cart']}}</button>
+                <button class="btn btn-outline-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">{{enumButtonText['View
+                    Cart']}}</button><br>
+                <button class="btn btn-outline-primary my-1">{{enumButtonText['Continue Shopping']}}</button><br>
+                <button class="btn btn-outline-primary">{{enumButtonText['Go To Home']}}</button><br> -->
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling" (click)="addToCart()">{{enumButtonText['Add To Cart']}}</button><br>
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling"
+                aria-controls="offcanvasScrolling" (click)="viewCart()">{{enumButtonText['View Cart']}}</button><br>
+                <button class="btn btn-outline-dark" routerLink="/product">{{enumButtonText['Continue Shopping']}}</button><br>
+                <button class="btn btn-outline-primary" routerLink="/home">{{enumButtonText['Go To Home']}}</button><br>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- offcanvas -->
+<div class="offcanvas offcanvas-end bg-light" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+    id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Cart</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+
+        <!-- <div>
+                <img class="img-thumbnail" [src]="url+productObject?.ProductImages[0].ProductImageUrl" alt="">
+                <button class="btn btn-outline-success mx-3" (click)="derease()">-</button>
+                    <button class="btn btn-outline-success mx-3">{{selectedQuantity}}</button>
+                    <button class="btn btn-outline-success mx-3"(click)="increase()">+</button>
+            </div> -->
+           
+        <div *ngFor="let data of cart">
+           
+                <i class="fas fa-window-close text-dark" (click)="deleteItem(data.productId)"></i>
+                <img class="img-thumbnail" [src]="url+data?.imageUrl" alt="">
+                <button class="btn btn-outline-success mx-3"
+                    (click)="decrementQuantityFromCanvas(data.productId)">-</button>
+                <button class="btn btn-outline-success mx-3">{{data.selectedQuantity}}</button>
+                <button class="btn btn-outline-success mx-3"
+                    (click)="incrementQuantityFromCanvas(data.productId)">+</button>
+           
+        </div>
+
+    </div>
+</div>
