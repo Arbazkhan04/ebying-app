@@ -21,7 +21,7 @@ export class ViewProductComponent implements OnInit {
   public enumButtonText = BUTTONTEXT;
 
   public offCanvas = '';
-  public cart:any = [];
+  public cart: any = [];
   // 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -94,7 +94,7 @@ export class ViewProductComponent implements OnInit {
   // without refractor
   addToCart() {
     if (this.selectedSizes.length <= 0) {
-      this.toastrService.error("please select the sizes")
+      this.toastrService.error("please select the sizes");
     }
     else {
       this.offCanvas = 'offcanvas'
@@ -106,16 +106,29 @@ export class ViewProductComponent implements OnInit {
         selectedQuantity: this.selectedQuantity,
         category, color, companyName, description, price, productName, quantity
       }
-
-      let processedCartArray :any = [];
+      processedCartObject;//testing
+      let processedCartArray: any = [];
       if (this.LocalStoragesmanagementService.getCartFromLocalStorage() !== null) {
         let valueAlreadyExists = this.LocalStoragesmanagementService.getCartFromLocalStorage();
         valueAlreadyExists.forEach((element: any) => {
           processedCartArray.push(element);
         });
       }
+      processedCartArray;
+      //check product is already exist or not 
+      let isProductExist = false;
+      processedCartArray.forEach((element: any) => {
+        if (element.productId == processedCartObject.productId) {
+          this.toastrService.info("Product is already exist ");
+          isProductExist = true;
+        }
+      })
+      if (!isProductExist) {
         processedCartArray.push(processedCartObject);
-       this.LocalStoragesmanagementService.addToCart(processedCartArray);
+        this.LocalStoragesmanagementService.addToCart(processedCartArray);
+      }
+       //check product is already exist or not 
+
     }
     this.getCart();
 
@@ -129,7 +142,7 @@ export class ViewProductComponent implements OnInit {
         this.LocalStoragesmanagementService.addToCart(cartFromLocalStorage)
       }
     });
-    this.getCart();
+    this.getCart(); // refresh the cart 
   }
 
   incrementQuantityFromCanvas(id: any) {
@@ -149,7 +162,7 @@ export class ViewProductComponent implements OnInit {
   public viewCart() {
     this.getCart();
   }
-  
+
 
   public getCart() {
     this.cart = this.LocalStoragesmanagementService.getCartFromLocalStorage();
@@ -163,13 +176,14 @@ export class ViewProductComponent implements OnInit {
     // }
 
   }
-  deleteItem(id:any){
-        const cartFromLocalStorage = this.LocalStoragesmanagementService.getCartFromLocalStorage(); // sari array   from  local storage
-        const updatedObject = cartFromLocalStorage.filter((object:any) => object.productId  !=  id); // filter
-        this.LocalStoragesmanagementService.addToCart(updatedObject);
-        this.getCart();
-      }
- 
+
+  deleteItem(id: any) {
+    const cartFromLocalStorage = this.LocalStoragesmanagementService.getCartFromLocalStorage(); // sari array   from  local storage
+    const updatedObject = cartFromLocalStorage.filter((object: any) => object.productId != id); // filter
+    this.LocalStoragesmanagementService.addToCart(updatedObject);
+    this.getCart();
+  }
+
 }
 
 
