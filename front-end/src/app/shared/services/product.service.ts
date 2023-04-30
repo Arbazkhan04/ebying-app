@@ -58,5 +58,10 @@ export class ProductService {
   getDataAboveFromFiveHundred(){
     return this.http.get('http://localhost:8686/ProductMangementRouter/aboveFromFiveHundred')
   }
+
+  searchProducts(searchTerm: any) {
+    const queryParams = { search: searchTerm };
+    return this.http.get('http://localhost:8686/ProductMangementRouter/searchBar', { params: queryParams });
+  }
 }
 

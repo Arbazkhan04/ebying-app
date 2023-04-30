@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, debounceTime, distinctUntilChanged, fromEvent, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -18,15 +19,35 @@ export class HomeComponent implements OnInit {
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
 
+  private subjectKeyUp = new Subject<any>();
+
   constructor(private ProductService: ProductService, private toastrService: ToastrService) { this.getLatestCategoryData() }
 
   ngOnInit(): void {
     this.getAllProductData();
-
-
-
+   
   }
 
+  searchItem(event: any) {
+    const value = event.target.value;
+    this.subjectKeyUp.next(value);
+    this.subjectKeyUp.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      switchMap((data) => {
+        return this.ProductService.searchProducts(data);
+      })
+    ).subscribe((res: any) => {
+      const myArray: any[] = [];
+      res.forEach((element: any) => {
+        if (element.softDelete !== 1) {
+          myArray.push(element);
+        }
+      });
+      this.showAllProduct = myArray;
+    });
+  }
+  
 
   getAllProductData() {
     const myArray: any = [];
@@ -43,6 +64,8 @@ export class HomeComponent implements OnInit {
     })
     this.showAllProduct = myArray;
   }
+
+
 
   getLatestCategoryData() {
     const myArray: any = [];
