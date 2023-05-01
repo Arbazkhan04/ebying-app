@@ -22,7 +22,7 @@
   <div class="title text-center mt-5">
     <h2> Our Products</h2>
   </div>
-
+  
 
   <div class="container">
 
@@ -40,7 +40,12 @@
 
     </div>
   </div>
-
+  
+  <div class="row" *ngIf="showAllProduct.length==0">
+    <div class="col-md-12 text-center">
+      <p class="mb-3">No product found...</p>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xl-3">
       <div class="my-2">
@@ -59,9 +64,7 @@
                 <button class="btn btn-outline-primary mx-3 my-2" (click)="RangeAboveFromFiveHun()">500 ...</button>
               </div>
             </div>
-            <!-- <li class="list-group-item"><label for="customRange3" class="form-label">Specify Your Range </label>
-              <input type="range" class="form-range" min="0" max="5" step="1.6" id="customRange3">
-            </li> -->
+            
             <li class="list-group-item w-100 text-center">Filter By Catogry:</li>
             <li class="list-group-item"><button class="btn btn-primary w-100" (click)="getLatestCategoryData()">latest
                 data
@@ -158,11 +161,7 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="showAllProduct.length==0">
-    <div class="col-md-12 text-center">
-      <p class="mb-3">No product found...</p>
-    </div>
-  </div>
+ 
 
   <!-- // pagination  -->
   <div class="container">
