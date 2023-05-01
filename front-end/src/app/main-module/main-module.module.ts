@@ -17,7 +17,7 @@ import { PurchaseSuccessfulComponent } from './main-components/purchase-successf
 import { ViewProductComponent } from './main-components/view-product/view-product.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     MainModuleRoutingModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModuleModule { }
