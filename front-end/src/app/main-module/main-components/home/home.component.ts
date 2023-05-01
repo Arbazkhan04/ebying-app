@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Subject, debounceTime, distinctUntilChanged, fromEvent, switchMap } from 'rxjs';
+import { Subject, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { ProductService } from 'src/app/shared/services/product.service';
 
 @Component({
@@ -19,14 +19,17 @@ export class HomeComponent implements OnInit {
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
 
+  
+
   private subjectKeyUp = new Subject<any>();
 
   constructor(private ProductService: ProductService, private toastrService: ToastrService) { this.getLatestCategoryData() }
 
   ngOnInit(): void {
     this.getAllProductData();
-   
   }
+
+
 
   searchItem(event: any) {
     const value = event.target.value;

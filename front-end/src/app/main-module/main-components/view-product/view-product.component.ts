@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BUTTONTEXT } from 'src/app/shared/enums/button-text';
 import { ProductInterface } from 'src/app/shared/interface/product';
@@ -26,6 +26,7 @@ export class ViewProductComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
+    private router:Router,
     private LocalStoragesmanagementService: LocalStoragesmanagementServiceService,
     private toastrService: ToastrService
 
@@ -184,7 +185,13 @@ export class ViewProductComponent implements OnInit {
     this.getCart();
   }
 
+  goToEditCartPage(){
+    this.router.navigate(['edit-cart'])
+  }
 }
+
+
+
 
 
 
