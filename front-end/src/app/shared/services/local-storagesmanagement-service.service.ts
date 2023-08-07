@@ -13,4 +13,9 @@ export class LocalStoragesmanagementServiceService {
   getCartFromLocalStorage(){
     return JSON.parse(localStorage.getItem('cart') || 'null');
   }
+
+  removeProductById(data:any)
+  {
+    localStorage.removeItem(data);
+  }
 }

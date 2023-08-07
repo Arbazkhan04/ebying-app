@@ -1,7 +1,6 @@
 
 <div class="container">
     <h1>Shopping Cart</h1>
-  
     <div class="row">
       <div class="col-md-8">
         <div class="card mb-3">
@@ -14,9 +13,9 @@
             <p class="card-text mx-1">{{data.productName}}</p>
             <p class="card-text mx-1">Product Description</p>
             <button class="btn btn-outline-danger mx-1" type="button">-</button>
-             1
+             {{data.selectedQuantity}}
             <button class="btn btn-outline-success mx-1"  type="button">+</button>
-            <i class=" mx-1 my-4 fa-solid fa-circle-xmark fa-2xl" style="color: #ec4109;"></i>
+            <i class=" mx-1 my-4 fa-solid fa-circle-xmark fa-2xl" style="color: #ec4109;" (click)="removeProductFromLocalStorage(i)"></i>
           </div>
         </div>
       </div>
@@ -27,16 +26,12 @@
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Product Name
+              Discount
               <span class="badge bg-primary rounded-pill">1</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              Product Name
+              Delivery
               <span class="badge bg-primary rounded-pill">2</span>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Product Name
-              <span class="badge bg-primary rounded-pill">3</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Subtotal
