@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { LocalStoragesmanagementServiceService } from 'src/app/shared/services/local-storagesmanagement-service.service';
 
 @Component({
@@ -10,9 +11,15 @@ export class EditCartComponent implements OnInit {
   
   url='http://localhost:8686/'
   cart:any[]=[]
+  subTotal:number = 0;
+
+
+
   constructor(
-    private _localStorage:LocalStoragesmanagementServiceService
-    ) {this.getCart()}
+    private _localStorage:LocalStoragesmanagementServiceService,
+    private toastr : ToastrService
+    ) {this.getCart()
+      this.subtotalProduct()}
 
   ngOnInit(): void {
   }
@@ -30,8 +37,30 @@ export class EditCartComponent implements OnInit {
     this._localStorage.addToCart(this.cart);
   }
 
-  increaseProductQuantity()
+  increseQuantity(index:number)
   {
+    this.cart[index].selectedQuantity++;
+    this._localStorage.addToCart(this.cart);
+  }
 
+  decreaseQuantity(index:number)
+  {
+   if(this.cart[index].selectedQuantity<=1)
+   {
+     this.toastr.info("product Quantity can not be less than zero")
+  }
+  else 
+  {
+     this.cart[index].selectedQuantity--;
+     console.log(this.cart[index].selectedQuantity)
+     this._localStorage.addToCart(this.cart);
+   }
+  }
+
+  subtotalProduct()
+  {
+    this.cart.forEach(element => {
+      this.subTotal+=element.selectedQuantity*element.price
+    });
   }
 }
