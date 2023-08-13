@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { loadStripe } from '@stripe/stripe-js';
 import { ToastrService } from 'ngx-toastr';
 import { LocalStoragesmanagementServiceService } from 'src/app/shared/services/local-storagesmanagement-service.service';
 
@@ -17,7 +19,8 @@ export class EditCartComponent implements OnInit {
 
   constructor(
     private _localStorage:LocalStoragesmanagementServiceService,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private http:HttpClient
     ) {this.getCart()
       this.subtotalProduct()}
 
@@ -62,5 +65,19 @@ export class EditCartComponent implements OnInit {
     this.cart.forEach(element => {
       this.subTotal+=element.selectedQuantity*element.price
     });
+  }
+
+  checkOut()
+  {
+    this.http
+      .post('http://localhost:8686/PayManagmentRouter/PayWithStripe', {
+        cart: this.cart,
+      })
+      .subscribe(async (res: any) => {
+        let stripe = await loadStripe('pk_test_51M6c7oCJCsl6hapAF5Q20mT2fXnLo5FzHmltaUhwdhkZ51ptRco8WUzay3DlbFy7JT2K8pNDRjo89bdFiFUBlPxm00RpK01KmR');
+        stripe?.redirectToCheckout({
+          sessionId: res.sessionId,
+        });
+      });
   }
 }

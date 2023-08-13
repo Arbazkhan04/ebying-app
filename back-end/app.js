@@ -3,7 +3,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-
+const bodyparser = require("body-parser");
 
 const ApplicationConfirgration=require('./configration/loadMyConfigrationFile') //first load env file then load other file
 //otherwise it will through an error like " MongoDb is not connectedMongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
@@ -21,8 +21,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.text());
 app.use(express.raw());
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+app.use(cors({ origin: true, credentials: true }));
+
 app.use(cors());
 app.use('/assets', express.static('assets'));
+app.use(express.static("public"));
 const PORT = process.env.PORT || 4441;
 //Block End Intialize the app
 

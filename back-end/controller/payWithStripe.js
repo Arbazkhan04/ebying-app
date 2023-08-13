@@ -1,7 +1,7 @@
 
 const stripe = require('stripe')(`${process.env.STRIPE_DEVELOPMENT_KEY}`);
 
-const PayWithStripe = async (req, res) => {
+/*const PayWithStripe = async (req, res) => {
     try {
         // const { FirstName, LastName, Country, StreetName, StateProvince, City, Zip, Amount, Token } = req.body;
         // const CustomerInformation = await stripe.customers.create({
@@ -61,6 +61,44 @@ const PayWithStripe = async (req, res) => {
         })
     }
 }
-
+*/
+const PayWithStripe = async (req, res) => {
+    try {
+      const { cart } = req.body; // Assuming the array of items is named "cart"
+  
+      const lineItems = cart.map((item) => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: item.productName, // Use the correct property name
+            images: [item.imageUrl], // Use the correct property name
+          },
+          unit_amount: item.price * 100,
+        },
+        quantity: item.selectedQuantity, // Use the correct property name
+      }));
+  
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        shipping_address_collection: {
+          allowed_countries: ['US', 'CA'],
+        },
+        shipping_options: [
+          // Shipping options configuration...
+        ],
+        line_items: lineItems,
+        mode: 'payment',
+        success_url: 'http://localhost:8686/success.html',
+        cancel_url: 'http://localhost:8686/cancel.html',
+      });
+  
+      res.status(200).json({ sessionId: session.id });
+    } catch (error) {
+      res.json(error);
+    }
+  };
+  
+  module.exports = { PayWithStripe };
+  
 
 module.exports = { PayWithStripe }
