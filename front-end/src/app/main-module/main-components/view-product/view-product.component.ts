@@ -37,6 +37,8 @@ export class ViewProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  
   getValueFromParms() {
     const parmsId = this.activatedRoute.snapshot.paramMap.get('id')
     console.log(parmsId)
@@ -57,7 +59,7 @@ export class ViewProductComponent implements OnInit {
     }
     console.log(this.selectedSizes)
   }
-  public derease() {
+  public decrease() {
     if (this.selectedQuantity > 0) {
       let getDataFromLocalStorage = this.LocalStoragesmanagementService.getCartFromLocalStorage();
       if (getDataFromLocalStorage !== null) {
