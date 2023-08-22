@@ -9,63 +9,65 @@ import { LocalStoragesmanagementServiceService } from 'src/app/shared/services/l
   templateUrl: './edit-cart.component.html',
   styleUrls: ['./edit-cart.component.css']
 })
-export class EditCartComponent implements OnInit {
-  
-  url='http://localhost:8686/'
-  cart:any[]=[]
-  subTotal:number = 0;
-
-
+export class EditCartComponent implements OnInit{
+  url = 'http://localhost:8686/';
+  cart: any[] = [];
+  subTotal: number = 0;
 
   constructor(
-    private _localStorage:LocalStoragesmanagementServiceService,
-    private toastr : ToastrService,
-    private http:HttpClient
-    ) {this.getCart()
-      this.subtotalProduct()}
+    private _localStorage: LocalStoragesmanagementServiceService,
+    private toastr: ToastrService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-  }
- 
-  getCart(){
-  this.cart=this._localStorage.getCartFromLocalStorage()
+    this.initializeCart();
   }
 
-  removeProductFromLocalStorage(index:number)
-  {
-    let getObjectByIndex = this.cart[index];
-    console.log(getObjectByIndex)
-    this._localStorage.removeProductById(getObjectByIndex);
-    this.cart.splice(index, 1); // Remove the item from the cart array
+  initializeCart() {
+    this.getCartFromLocalStorage();
+    this.calculateSubtotal();
+  }
+
+  
+  getCartFromLocalStorage() {
+    this.cart = this._localStorage.getCartFromLocalStorage();
+  }
+
+
+
+  removeProduct(index: number) {
+    const removedProduct = this.cart.splice(index, 1)[0]; // Remove and capture the removed item
+    this._localStorage.removeProductById(removedProduct);
+    this.updateCartState();
+  }
+
+  changeQuantity(index: number, increase: boolean) {
+    const selectedProduct = this.cart[index];
+    if (increase) {
+      selectedProduct.selectedQuantity++;
+    } else {
+      if (selectedProduct.selectedQuantity > 1) {
+        selectedProduct.selectedQuantity--;
+      } else {
+        this.toastr.info('Product quantity cannot be less than one');
+        return;
+      }
+    }
+    this.updateCartState();
+  }
+
+  updateCartState() {
     this._localStorage.addToCart(this.cart);
+    this.calculateSubtotal();
   }
 
-  increseQuantity(index:number)
-  {
-    this.cart[index].selectedQuantity++;
-    this._localStorage.addToCart(this.cart);
+
+  calculateSubtotal() {
+    this.subTotal = this.cart.reduce((total, element) => total + element.selectedQuantity * element.price, 0);
   }
 
-  decreaseQuantity(index:number)
-  {
-   if(this.cart[index].selectedQuantity<=1)
-   {
-     this.toastr.info("product Quantity can not be less than zero")
-  }
-  else 
-  {
-     this.cart[index].selectedQuantity--;
-     console.log(this.cart[index].selectedQuantity)
-     this._localStorage.addToCart(this.cart);
-   }
-  }
 
-  subtotalProduct()
-  {
-    this.cart.forEach(element => {
-      this.subTotal+=element.selectedQuantity*element.price
-    });
-  }
 
   checkOut()
   {
