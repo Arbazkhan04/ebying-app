@@ -9,6 +9,10 @@ import { ProductService } from 'src/app/shared/services/product.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+
+
+ 
   showAllProduct: any = []
   // AllCatgory:any=[]
   Url = 'http://localhost:8686/'
@@ -19,6 +23,7 @@ export class HomeComponent implements OnInit {
   tableSize: number = 6;
   tableSizes: any = [3, 6, 9, 12];
 
+  hideCategorySection=true;
   
 
   private subjectKeyUp = new Subject<any>();
@@ -30,6 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
 
+  toggleCategorySection() {
+    this.hideCategorySection = !this.hideCategorySection;
+    }
 
   searchItem(event: any) {
     const value = event.target.value;
