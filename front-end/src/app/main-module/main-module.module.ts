@@ -18,6 +18,7 @@ import { ViewProductComponent } from './main-components/view-product/view-produc
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PurchaseFailedComponent,
     PurchaseSuccessfulComponent,
     ViewProductComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

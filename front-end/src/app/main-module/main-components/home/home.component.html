@@ -1,229 +1,244 @@
 <div class="bg-img overflow-hidden">
-  <div class="container">
-    <div class="row">
-      <div
-        class="col-md-6 col-sm-12"
-        data-aos="fade-up"
-        data-aos-duration="3000"
-      >
-        <h1 class="text-white banner-heading">
-          Mens FootWear <span style="color: rgb(38, 0, 255)">Shoes</span>
-        </h1>
-        <h3 class="banner-heading2 mt-3">Winter Fashion</h3>
-        <!-- HTML !-->
-        <button class="button-1 mt-3" role="button">
-          <span class="text">Explore</span><span>Products</span>
-        </button>
-      </div>
-      <div class="col-md-6 col-sm-12">
+    <div class="container">
+      <div class="row">
         <div
-          class="banner-img"
-          data-aos="fade-left"
+          class="col-md-6 col-sm-12"
+          data-aos="fade-up"
           data-aos-duration="3000"
-        ></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- updated  -->
-<div class="container overflow-hidden">
-  <div class="title text-center mt-5">
-    <h2>Our Products</h2>
-  </div>
-
-  <div class="container">
-    <div class="row height d-flex justify-content-center align-items-center">
-      <div class="col-md-8">
-        <div class="search">
-          <i class="fa fa-search"></i>
-          <input
-            type="text"
-            class="form-control"
-            id="search"
-            (keyup)="searchItem($event)"
-            placeholder="Search For items..."
-          />
-          <!-- <button><i class="fa-solid fa-filter"></i></button> -->
+        >
+          <h1 class="text-white banner-heading">
+            Mens FootWear <span style="color: rgb(38, 0, 255)">Shoes</span>
+          </h1>
+          <h3 class="banner-heading2 mt-3">Winter Fashion</h3>
+          <!-- HTML !-->
+          <button class="button-1 mt-3" role="button">
+            <span class="text">Explore</span><span>Products</span>
+          </button>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div
+            class="banner-img"
+            data-aos="fade-left"
+            data-aos-duration="3000"
+          ></div>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="row" *ngIf="showAllProduct.length == 0">
-    <div class="col-md-12 text-center">
-      <p class="mb-3">No product found...</p>
+  
+  <!-- updated  -->
+  <div class="container overflow-hidden">
+    <div class="title text-center mt-5">
+      <h2>Our Products</h2>
     </div>
-  </div>
-
-  <div class="row">
-
-    <!-- show toggle on small screen -->
-      <div class="col-md-3 d-md-none">
-      <button class="btn btn-primary" (click)="toggleCategorySection()">
-        <i class="fa fa-bars"></i>
-      </button>
-    </div>
-
-    <div class="col-lg-3 col-md-4" [ngClass]="{'d-none d-md-block': hideCategorySection}">
-      <div class="my-2">
-        <div class="card shadow">
-          <div class="card-header bgcolor text-white text-muted">
-            <h3>Catagories</h3>
+  
+    <div class="container">
+      <div class="row height d-flex justify-content-center align-items-center">
+        <div class="col-md-8">
+          <div class="search">
+            <i class="fa fa-search"></i>
+            <input
+              type="text"
+              class="form-control"
+              id="search"
+              (keyup)="searchItem($event)"
+              placeholder="Search For items..."
+            />
+            <!-- <button><i class="fa-solid fa-filter"></i></button> -->
           </div>
-          <ul class="list-group list-group-flush">
-            <div class="my-2">
+        </div>
+      </div>
+    </div>
+  
+    <div class="row" *ngIf="showAllProduct.length == 0">
+      <div class="col-md-12 text-center">
+        <p class="mb-3">No product found...</p>
+      </div>
+    </div>
+  
+    <div class="row">
+  
+      <!-- show toggle on small screen -->
+        <div class="col-md-3 d-md-none">
+        <button class="btn btn-primary" (click)="toggleCategorySection()">
+          <i class="fa fa-bars"></i>
+        </button>
+      </div>
+  
+      <div class="col-lg-3 col-md-4" [ngClass]="{'d-none d-md-block': hideCategorySection}">
+        <div class="my-2">
+          <div class="card shadow">
+            <div class="card-header bgcolor text-white text-muted">
+              <h3>Catagories</h3>
+            </div>
+            <ul class="list-group list-group-flush">
+              <div class="my-2">
+                <li class="list-group-item w-100 text-center">
+                  Filter By Range:
+                </li>
+                <div class="d-flex justify-content-center">
+                  <button
+                    class="btn btn-outline-primary mx-3 my-2"
+                    (click)="RangeFormZeroToTwentyFive()"
+                  >
+                    0 to 250
+                  </button>
+                  <button
+                    class="btn btn-outline-primary mx-3 my-2"
+                    (click)="RangeFromTwentyFiveToFiveHun()"
+                  >
+                    250 to 500
+                  </button>
+                  <button
+                    class="btn btn-outline-primary mx-3 my-2"
+                    (click)="RangeAboveFromFiveHun()"
+                  >
+                    500 ...
+                  </button>
+                </div>
+              </div>
+  
               <li class="list-group-item w-100 text-center">
-                Filter By Range:
+                Filter By Catogry:
               </li>
-              <div class="d-flex justify-content-center">
+              <li class="list-group-item">
                 <button
-                  class="btn btn-outline-primary mx-3 my-2"
-                  (click)="RangeFormZeroToTwentyFive()"
+                  class="btn btn-primary w-100"
+                  (click)="getLatestCategoryData()"
                 >
-                  0 to 250
+                  latest data
                 </button>
+              </li>
+              <li class="list-group-item">
                 <button
-                  class="btn btn-outline-primary mx-3 my-2"
-                  (click)="RangeFromTwentyFiveToFiveHun()"
+                  class="btn btn-primary w-100"
+                  (click)="getAllProductData()"
                 >
-                  250 to 500
+                  All data
                 </button>
-                <button
-                  class="btn btn-outline-primary mx-3 my-2"
-                  (click)="RangeAboveFromFiveHun()"
-                >
-                  500 ...
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getShoesData()">
+                  Shoes Collection
                 </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getPantData()">
+                  Pant's Collection
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getShoesData()">
+                  Shirt-Collection
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getQuartaData()">
+                  Qurta Collection
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getMakupData()">
+                  Makeup
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getBabyData()">
+                  Baby's Collection
+                </button>
+              </li>
+              <li class="list-group-item">
+                <button class="btn btn-primary w-100" (click)="getGroceryData()">
+                  Grocerries
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-9 col-md-8">
+
+        <!---------------------- List-View -------------------------->
+        <div *ngIf="_loadingService.loading$ | async">
+          <app-spinner></app-spinner>
+        </div>
+
+
+        <div *ngIf="!(_loadingService.loading$ | async)">
+          <div class="row" *ngIf="showAllProduct.length > 0">
+            <div
+              class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center"
+              *ngFor="
+                let data of showAllProduct
+                  | paginate
+                    : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                let i = index
+              "
+            >
+              <!-- [hidden]="show===false put in my-3 -->
+              <div class="my-3">
+                <div class="card shadow" style="width: 18rem">
+                  <div class="card-header bgcolor"></div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <img
+                        [src]="Url + data.ProductImages[0].ProductImageUrl"
+                        class="card-img-top rounded w-100"
+                        alt="..."
+                      />
+                    </li>
+                    <li class="list-group-item">
+                      <h5 class="card-title">
+                        Name:<b
+                          >{{ data.productName }} Price:{{
+                            data.price - 1 | currency
+                          }}
+                        </b>
+                      </h5>
+                    </li>
+                    <li class="list-group-item">
+                      <h5 class="card-title">Desc: {{ data.description }}</h5>
+                    </li>
+                    <li class="list-group-item">
+                      <a
+                        routerLink="/view-product/{{ data._id }}"
+                        class="btn btn-primary w-100"
+                        >View Detail</a
+                      >
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
-            <li class="list-group-item w-100 text-center">
-              Filter By Catogry:
-            </li>
-            <li class="list-group-item">
-              <button
-                class="btn btn-primary w-100"
-                (click)="getLatestCategoryData()"
-              >
-                latest data
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button
-                class="btn btn-primary w-100"
-                (click)="getAllProductData()"
-              >
-                All data
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getShoesData()">
-                Shoes Collection
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getPantData()">
-                Pant's Collection
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getShoesData()">
-                Shirt-Collection
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getQuartaData()">
-                Qurta Collection
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getMakupData()">
-                Makeup
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getBabyData()">
-                Baby's Collection
-              </button>
-            </li>
-            <li class="list-group-item">
-              <button class="btn btn-primary w-100" (click)="getGroceryData()">
-                Grocerries
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-9 col-md-8">
-      <!---------------------- List-View -------------------------->
-      <div class="row" *ngIf="showAllProduct.length > 0">
-        <div
-          class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-center"
-          *ngFor="
-            let data of showAllProduct
-              | paginate
-                : {
-                    itemsPerPage: tableSize,
-                    currentPage: page,
-                    totalItems: count
-                  };
-            let i = index
-          "
-        >
-          <!-- [hidden]="show===false put in my-3 -->
-          <div class="my-3">
-            <div class="card shadow" style="width: 18rem">
-              <div class="card-header bgcolor"></div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <img
-                    [src]="Url + data.ProductImages[0].ProductImageUrl"
-                    class="card-img-top rounded w-100"
-                    alt="..."
-                  />
-                </li>
-                <li class="list-group-item">
-                  <h5 class="card-title">
-                    Name:<b
-                      >{{ data.productName }} Price:{{
-                        data.price - 1 | currency
-                      }}
-                    </b>
-                  </h5>
-                </li>
-                <li class="list-group-item">
-                  <h5 class="card-title">Desc: {{ data.description }}</h5>
-                </li>
-                <li class="list-group-item">
-                  <a
-                    routerLink="/view-product/{{ data._id }}"
-                    class="btn btn-primary w-100"
-                    >View Detail</a
-                  >
-                </li>
-              </ul>
+           <!-- //pagination -->
+           <div class="container">
+            <div class="row">
+              <div class="d-flex justify-content-center">
+                <pagination-controls
+                  previousLabel="Prev"
+                  nextLabel="Next"
+                  (pageChange)="onTableDataChange($event)"
+                >
+                </pagination-controls>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!-- // pagination  -->
-      <div class="container">
-        <div class="row">
-          <div class="d-flex justify-content-center">
-            <pagination-controls
-              previousLabel="Prev"
-              nextLabel="Next"
-              (pageChange)="onTableDataChange($event)"
-            >
-            </pagination-controls>
-          </div>
-        </div>
-      </div>
-      <!-- // pagination  -->
-    </div>
 
-    <!-- updated  -->
+          <!-- //pagination -->
+          
+          </div>
+        
+        </div>
+        <!-- // pagination  -->
+       
+        <!-- // pagination  -->
+      </div>
+  
+      <!-- updated  -->
+    </div>
   </div>
-</div>
