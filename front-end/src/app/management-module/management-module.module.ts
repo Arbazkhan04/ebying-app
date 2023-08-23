@@ -7,6 +7,7 @@ import { ManagementComponentsComponent } from './management-components/managemen
 import { LoginComponent } from './management-components/login/login.component';
 import { SingUpComponent } from './management-components/sing-up/sing-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SpinnerComponent } from '../shared/spinner/spinner.component';
 
 
 
@@ -16,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ManagementComponentsComponent,
     LoginComponent,
     SingUpComponent,
+    SpinnerComponent
    
   ],
   imports: [

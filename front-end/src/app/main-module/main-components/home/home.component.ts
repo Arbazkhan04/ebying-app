@@ -210,7 +210,6 @@ export class HomeComponent implements OnInit {
    
   }
 
-
   getGroceryData() {
      this._loadingService.startLoading();
     setTimeout(() => {
