@@ -1,7 +1,7 @@
-
 <app-header></app-header>
-<div *ngIf="loadingService.loading$ | async">
-    <app-spinner></app-spinner>
+<app-banner *ngIf="showHead"></app-banner>
+<div *ngIf="shouldShowSpinner && (loadingService.loading$ | async)">
+    <app-shared-spinner></app-shared-spinner>
 </div>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

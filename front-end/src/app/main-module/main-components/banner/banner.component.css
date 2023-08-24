@@ -1,0 +1,700 @@
+/* .flexid{
+    display: flex;
+} */
+
+ul>li>img{
+    height: 300px;
+}
+.bgcolor{
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.navbar-toggler:focus {
+    /*Below line will remove the border from the icon
+    I have used bootstrap icon here */
+    /* This will only remove the shadow effect */
+    /* Border is still there */
+
+    /* if you don't want any border then set the property equals to zero */
+    border: 0 !important;
+    box-shadow: none !important;
+  
+    /* This will remove the rounded corner(radious-border)
+    and give square border */
+    /* border-radius: 0 !important; */    
+}
+
+.navbar-toggler {
+    /* This will completely remove border from the icon */
+    /* If you need border for the icon then comment this code */
+     border: 0 !important;
+
+    /* if you want to check the border please uncomment below code */
+    /* border-color: yellow !important; */
+}
+/* media query  */
+@media screen and (min-width: 360px) {
+    .media{width: 100px;}
+ }
+
+ /* banner */
+
+ .navbar-background-color{
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+   
+ }
+ body{
+    font-family: poppins;
+}
+.bg-img{
+    /* background-image: linear-gradient(to right,rgb(0, 0, 0),red); */
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    margin-top: 0px;
+}
+.banner-img{
+    background-image: url("../../../../assets/img1-removebg-preview.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80vh;
+    height: 50vh;
+    margin-top: 36px;
+}
+.banner-heading{
+    font-size: 60px;
+    /* font-style: italic; */
+    /* font-family: 'Alegreya SC'; */
+    /* margin-top: 10vh; */
+    font-weight: 800;
+    font-family: 'Trocchi', serif;
+    margin-top: 47px;
+}
+.banner-heading2{
+    font-size: 40px;
+    /* font-style: italic; */
+    color: #ffffff;
+    /* margin-top: 10vh; */
+    font-weight: 900;
+    font-family: 'Alegreya SC';
+    /* font-family: 'Trocchi', serif; */
+}
+/* CSS */
+.button-1 {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #18181a;
+    color: #ffffff;
+    display: inline-block;
+    width: 25%;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 18px 18px 17px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #1256bb;
+    /* border-color: rgb(255, 255, 255); */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-1 span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+  }
+  
+  .button-1 span:last-child {
+    color: rgb(0, 0, 0);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(225%) translateX(-50%);
+    height: 14px;
+    line-height: 13px;
+  }
+  
+  .button-1:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    transform-origin: bottom center;
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    transform: skewY(9.3deg) scaleY(0);
+    z-index: 50;
+  }
+  
+  .button-1:hover:after {
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(2);
+    width: 100%;
+  }
+  
+  .button-1:hover span:last-child {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+  }
+  @media (max-width: 486px){
+   .button-1{
+     width: 29%;
+   }
+ 
+ }
+  @media (max-width: 437px){
+   .button-1 {
+     width: 38%;
+   }
+ }
+  @media (max-width: 352px){
+   .button-1 {
+     width: 38%;
+   }
+ }
+ /* ****************************************  Banner-Responsive */
+ @media (max-width: 1199px){
+    .bg-img{
+        height: 70vh;
+    }
+    .banner-img{
+        width: 70vh;
+    }
+    .banner-heading{
+        margin-top: 21vh;
+        font-size: 52px;
+    }
+    .banner-heading2{
+        font-size: 38px;
+    }
+ 
+    }
+ @media (max-width: 991px){
+    .bg-img{
+        height: 76vh;
+    }
+    .banner-img{
+        width: 49vh;
+        height: 48vh;
+    }
+    .banner-heading{
+        margin-top: 18vh;
+        font-size: 40px;
+    }
+    .banner-heading2{
+        font-size: 38px;
+    }
+}
+ @media (max-width: 767px){
+    .bg-img{
+        height: 88vh;
+    }
+    .banner-img{
+        width: 55vh;
+        height: 46vh;
+        margin-top: 1px;
+    }
+    .banner-heading{
+        margin-top: 19vh;
+font-size: 41px;
+    }
+    .banner-heading2{
+        font-size: 30px;
+    }
+ 
+    }
+ @media (max-width: 576px){
+    .bg-img{
+        height: 79vh;
+    }
+    .banner-img{
+        width: 51vh;
+        height: 40vh;
+    }
+    .banner-heading{
+        margin-top: 16vh;
+        font-size: 28px;
+    }
+    .banner-heading2{
+        font-size: 30px;
+    }
+ 
+    }
+ @media (max-width: 372px){
+    .bg-img{
+        height: 83vh;
+    }
+    .banner-img{
+        width: 40vh;
+        height: 40vh;
+    }
+    .banner-heading{
+        margin-top: 15vh;
+        font-size: 40px;
+    }
+    .banner-heading2{
+        font-size: 20px;
+    }
+ 
+    }
+
+/* ********************* Default button */
+.red{
+    color: red;
+};
+.pointer{
+    cursor: pointer;
+}
+/* heading before after */
+.title>h2{
+    color: black;
+    font-size: 40px;
+    font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+    font-weight: bold;
+    }
+    .title>h2::after{
+    content: "";
+    display: block;
+    width: 10%;
+    height: 4px;
+    margin: 20px auto;
+    background-color: #1256bb;
+    }
+/* heading before after */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       body{
+        background-color:#2a12b3;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .height{
+        height: 14vh;
+       }
+       
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+         
+       }
+
+       .search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid #3a08dc;;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 110px;
+        color: black;
+        background: #0b1fd0;;
+
+       }
+      
+      
+       /* Add this to your component's CSS file */
+/* .flexid{
+    display: flex;
+} */
+
+ul>li>img{
+    height: 300px;
+}
+.bgcolor{
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+.navbar-toggler:focus {
+    /*Below line will remove the border from the icon
+    I have used bootstrap icon here */
+    /* This will only remove the shadow effect */
+    /* Border is still there */
+
+    /* if you don't want any border then set the property equals to zero */
+    border: 0 !important;
+    box-shadow: none !important;
+  
+    /* This will remove the rounded corner(radious-border)
+    and give square border */
+    /* border-radius: 0 !important; */    
+}
+
+.navbar-toggler {
+    /* This will completely remove border from the icon */
+    /* If you need border for the icon then comment this code */
+     border: 0 !important;
+
+    /* if you want to check the border please uncomment below code */
+    /* border-color: yellow !important; */
+}
+/* media query  */
+@media screen and (min-width: 360px) {
+    .media{width: 100px;}
+ }
+
+ /* banner */
+
+ .navbar-background-color{
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+   
+ }
+ body{
+    font-family: poppins;
+}
+.bg-img{
+    /* background-image: linear-gradient(to right,rgb(0, 0, 0),red); */
+    background-image: linear-gradient(to right,rgb(0, 0, 0),#0f70ff);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+    margin-top: 0px;
+}
+.banner-img{
+    background-image: url("../../../../assets/img1-removebg-preview.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80vh;
+    height: 50vh;
+    margin-top: 36px;
+}
+.banner-heading{
+    font-size: 60px;
+    /* font-style: italic; */
+    /* font-family: 'Alegreya SC'; */
+    /* margin-top: 10vh; */
+    font-weight: 800;
+    font-family: 'Trocchi', serif;
+    margin-top: 47px;
+}
+.banner-heading2{
+    font-size: 40px;
+    /* font-style: italic; */
+    color: #ffffff;
+    /* margin-top: 10vh; */
+    font-weight: 900;
+    font-family: 'Alegreya SC';
+    /* font-family: 'Trocchi', serif; */
+}
+/* CSS */
+.button-1 {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #18181a;
+    color: #ffffff;
+    display: inline-block;
+    width: 25%;
+    border-radius: 5px;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 18px 18px 17px;
+    text-decoration: none;
+    cursor: pointer;
+    background: #1256bb;
+    /* border-color: rgb(255, 255, 255); */
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button-1 span:first-child {
+    position: relative;
+    transition: color 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 10;
+  }
+  
+  .button-1 span:last-child {
+    color: rgb(0, 0, 0);
+    display: block;
+    position: absolute;
+    bottom: 0;
+    transition: all 500ms cubic-bezier(0.48, 0, 0.12, 1);
+    z-index: 100;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateY(225%) translateX(-50%);
+    height: 14px;
+    line-height: 13px;
+  }
+  
+  .button-1:after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    transform-origin: bottom center;
+    transition: transform 600ms cubic-bezier(0.48, 0, 0.12, 1);
+    transform: skewY(9.3deg) scaleY(0);
+    z-index: 50;
+  }
+  
+  .button-1:hover:after {
+    transform-origin: bottom center;
+    transform: skewY(9.3deg) scaleY(2);
+    width: 100%;
+  }
+  
+  .button-1:hover span:last-child {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 1;
+    transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+  }
+  @media (max-width: 486px){
+   .button-1{
+     width: 29%;
+   }
+ 
+ }
+  @media (max-width: 437px){
+   .button-1 {
+     width: 38%;
+   }
+ }
+  @media (max-width: 352px){
+   .button-1 {
+     width: 38%;
+   }
+ }
+ /* ****************************************  Banner-Responsive */
+ @media (max-width: 1199px){
+    .bg-img{
+        height: 70vh;
+    }
+    .banner-img{
+        width: 70vh;
+    }
+    .banner-heading{
+        margin-top: 21vh;
+        font-size: 52px;
+    }
+    .banner-heading2{
+        font-size: 38px;
+    }
+ 
+    }
+ @media (max-width: 991px){
+    .bg-img{
+        height: 76vh;
+    }
+    .banner-img{
+        width: 49vh;
+        height: 48vh;
+    }
+    .banner-heading{
+        margin-top: 18vh;
+        font-size: 40px;
+    }
+    .banner-heading2{
+        font-size: 38px;
+    }
+}
+ @media (max-width: 767px){
+    .bg-img{
+        height: 88vh;
+    }
+    .banner-img{
+        width: 55vh;
+        height: 46vh;
+        margin-top: 1px;
+    }
+    .banner-heading{
+        margin-top: 19vh;
+font-size: 41px;
+    }
+    .banner-heading2{
+        font-size: 30px;
+    }
+ 
+    }
+ @media (max-width: 576px){
+    .bg-img{
+        height: 79vh;
+    }
+    .banner-img{
+        width: 51vh;
+        height: 40vh;
+    }
+    .banner-heading{
+        margin-top: 16vh;
+        font-size: 28px;
+    }
+    .banner-heading2{
+        font-size: 30px;
+    }
+ 
+    }
+ @media (max-width: 372px){
+    .bg-img{
+        height: 83vh;
+    }
+    .banner-img{
+        width: 40vh;
+        height: 40vh;
+    }
+    .banner-heading{
+        margin-top: 15vh;
+        font-size: 40px;
+    }
+    .banner-heading2{
+        font-size: 20px;
+    }
+ 
+    }
+
+/* ********************* Default button */
+.red{
+    color: red;
+};
+.pointer{
+    cursor: pointer;
+}
+/* heading before after */
+.title>h2{
+    color: black;
+    font-size: 40px;
+    font-family: Roboto, HelveticaNeue, Arial, sans-serif;
+    font-weight: bold;
+    }
+    .title>h2::after{
+    content: "";
+    display: block;
+    width: 10%;
+    height: 4px;
+    margin: 20px auto;
+    background-color: #1256bb;
+    }
+/* heading before after */
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+
+
+       body{
+        background-color:#2a12b3;
+        font-family: "Poppins", sans-serif;
+        font-weight: 300;
+       }
+
+       .height{
+        height: 14vh;
+       }
+       
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+         
+       }
+
+       .search input{
+
+        height: 60px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+
+
+       }
+
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid #3a08dc;;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        height: 50px;
+        width: 110px;
+        color: black;
+        background: #0b1fd0;;
+
+       }
+      
+      
+       /* Add this to your component's CSS file */

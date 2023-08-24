@@ -24,7 +24,7 @@ export class LoadingService {
     this.route.events.pipe(
       tap(event => {
         if (event instanceof NavigationStart) {
-          this.startLoading();
+           this.startLoading()
         } else if (event instanceof NavigationEnd || event instanceof NavigationError || event instanceof NavigationCancel) {
           // Start a timer that emits after 2 seconds
           timer(2000).pipe(

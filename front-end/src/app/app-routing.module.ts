@@ -9,7 +9,8 @@ const routes: Routes = [
   
   { path: 'MainModule', loadChildren: () => import('./main-module/main-module.module').then(m => m.MainModuleModule) }, 
   { path: 'ManagementModule', loadChildren: () => import('./management-module/management-module.module').then(m => m.ManagementModuleModule) 
-}];
+},
+  { path: 'spinner', loadChildren: () => import('./spinner/spinner.module').then(m => m.SpinnerModule) }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

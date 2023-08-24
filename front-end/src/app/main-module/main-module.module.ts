@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { MainModuleRoutingModule } from './main-module-routing.module';
 import { MainModuleComponent } from './main-module.component';
 import { MainComponentsComponent } from './main-components/main-components.component';
@@ -18,8 +17,8 @@ import { ViewProductComponent } from './main-components/view-product/view-produc
 import { ToastrModule } from 'ngx-toastr';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SpinnerComponent } from '../shared/spinner/spinner.component';
-
+import { SpinnerModule } from '../spinner/spinner.module';
+import { BannerComponent } from './main-components/banner/banner.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,8 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
     PurchaseFailedComponent,
     PurchaseSuccessfulComponent,
     ViewProductComponent,
-    SpinnerComponent
+    BannerComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -44,7 +44,8 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
     ToastrModule.forRoot(),
     NgxPaginationModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SpinnerModule
   ]
 })
 export class MainModuleModule { }

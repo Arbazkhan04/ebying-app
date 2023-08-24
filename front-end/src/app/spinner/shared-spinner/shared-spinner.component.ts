@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-spinner',
-  templateUrl: './spinner.component.html',
-  styleUrls: ['./spinner.component.css']
+  selector: 'app-shared-spinner',
+  templateUrl: './shared-spinner.component.html',
+  styleUrls: ['./shared-spinner.component.css']
 })
-export class SpinnerComponent implements OnInit {
-  svgSpinner!: SafeHtml;
+export class SharedSpinnerComponent implements OnInit {
 
+  svgSpinner!: SafeHtml;
+  
   constructor(private domSentizer:DomSanitizer) { }
 
   ngOnInit(): void {

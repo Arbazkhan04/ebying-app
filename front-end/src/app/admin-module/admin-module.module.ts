@@ -9,7 +9,7 @@ import { ProductsComponent } from './admin-component/products/products.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { ProductAnalysticComponent } from './admin-component/product-analystic/product-analystic.component';
-import { SpinnerComponent } from '../shared/spinner/spinner.component';
+import { SpinnerModule } from '../spinner/spinner.module';
 
 
 
@@ -20,7 +20,6 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
     DashboardComponent,
     ProductsComponent,
     ProductAnalysticComponent,
-    SpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +28,7 @@ import { SpinnerComponent } from '../shared/spinner/spinner.component';
     AdminModuleRoutingModule,
     ToastrModule.forRoot(),
     NgChartsModule,
+    SpinnerModule
  
     
   

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { EmailService } from 'src/app/shared/services/email.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -14,7 +15,8 @@ export class ContactUsComponent implements OnInit {
   constructor(
     private fb:FormBuilder,
     private sendMail:EmailService,
-    private _toastrService:ToastrService
+    private _toastrService:ToastrService,
+    public loadingService:LoadingService
     ) { }
 
   ngOnInit(): void {
@@ -33,14 +35,21 @@ export class ContactUsComponent implements OnInit {
 
   submitForm()
   {
-    console.log(this.myForm.value);
+    this.loadingService.startLoading();
     const paylaod=this.myForm.value;
-    this.sendMail.sendEmail(paylaod).subscribe((res:any)=>{
+    this.sendMail.sendEmail(paylaod).subscribe(
+      (res:any)=>{
       res.message;
       this._toastrService.info(res.message.Message);
-      console.log(res.message.Message)
-
-    })
+    },
+    (error)=>{
+      this._toastrService.show(error.message)
+    },
+    ()=>{
+      this.loadingService.stopLoading();
+    }
+    
+    )
 
   }
    

@@ -10,13 +10,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http'
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpinnerComponent
   ],
   imports: [
     BrowserModule,HttpClientModule,
