@@ -44,6 +44,10 @@ export class LoginComponent implements OnInit {
        this.Router.navigate(['/admin'])
        this.toastrService.show(res.Message)
       }
+      else if(res.UserPrivilege==='User')
+      {
+        this.Router.navigate(['']);
+      }
      else{
       this.toastrService.show(res.Message)
 

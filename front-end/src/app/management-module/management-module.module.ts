@@ -17,7 +17,6 @@ import { SpinnerModule } from '../spinner/spinner.module';
     ManagementComponentsComponent,
     LoginComponent,
     SingUpComponent,
-   
   ],
   imports: [
     CommonModule,
