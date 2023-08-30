@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       })
     }
   ngOnInit(): void {
+    this.toastrService.show("please first login before we procceed");
   }
    
   submitLoginForm(){

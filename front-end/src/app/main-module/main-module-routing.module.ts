@@ -12,6 +12,7 @@ import { PurchaseFailedComponent } from './main-components/purchase-failed/purch
 import { PurchaseSuccessfulComponent } from './main-components/purchase-successful/purchase-successful.component';
 import { ViewProductComponent } from './main-components/view-product/view-product.component';
 import { MainModuleComponent } from './main-module.component';
+import { UsermanagementGuard } from '../shared/guard/usermanagement.guard';
 
 const routes: Routes = [
   { path: '', component: MainModuleComponent,
@@ -21,7 +22,7 @@ const routes: Routes = [
     {path:'about-us',component:AboutUSComponent},
     {path:'check-out',component:CheckOutComponent},
     {path:'contact-us',component:ContactUsComponent},
-    {path:'edit-cart',component:EditCartComponent},
+    {path:'edit-cart', canActivate:[UsermanagementGuard], component:EditCartComponent},
     {path:'footer',component:FooterComponent},
     {path:'header',component:HeaderComponent},
     {path:'products',component:ProductsComponent},
