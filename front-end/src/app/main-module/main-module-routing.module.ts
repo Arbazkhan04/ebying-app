@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: '', component: MainModuleComponent,
   children:[
     {path:'',component:HomeComponent},
-    {path:'home',component:HomeComponent},
+    {path:'Products',component:HomeComponent},
     {path:'about-us',component:AboutUSComponent},
     {path:'check-out',component:CheckOutComponent},
     {path:'contact-us',component:ContactUsComponent},

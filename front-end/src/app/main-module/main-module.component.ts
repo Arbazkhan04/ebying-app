@@ -19,7 +19,7 @@ export class MainModuleComponent implements OnInit {
   ) {
     router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
-        this.showHead = event.url === '/home' || event.url === '';
+        this.showHead = event.url === '/Products' || event.url === '';
         this.shouldShowSpinner = !this.showHead;
       }
     });
@@ -28,7 +28,7 @@ export class MainModuleComponent implements OnInit {
   ngOnInit(): void {
     // Check the initial route and set showHead and shouldShowSpinner accordingly
     this.activatedRoute.url.subscribe(urlSegments => {
-      this.showHead = urlSegments.length === 0 || urlSegments[0].path === 'home';
+      this.showHead = urlSegments.length === 0 || urlSegments[0].path === 'Products';
       this.shouldShowSpinner = !this.showHead;
     });
   }
