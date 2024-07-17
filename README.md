@@ -19,6 +19,20 @@ This is a full-featured e-commerce application built with Angular, Node.js, Expr
 
 - **Frontend:** Angular
 - **Backend:** Node.js, Express
-- **Database:** MongoDB
+- **Database:** MongoDBech Stack 
 - **Payment Gateway:** Stripe
+
+## Installation
+
+# Add Configuration files in Backend folder
+- Application_confirgration_dev.env
+- Application_confirgration_prod.env
+- Application_confirgration_test.env
+# Values of Env files
+- NODE_ENV=developement
+- PORT = 8686
+- MONGO_URI="Your database url"
+- SECRET_KEY="SuperSecret"
+- SALT_ROUND=10;
+- STRIPE_DEVELOPMENT_KEY='Your stripe development key'
 
